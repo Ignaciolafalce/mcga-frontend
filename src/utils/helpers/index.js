@@ -8,7 +8,5 @@ export const isNullOrEmty = (property) => {
 }
 
 export const formatDateToString = (timestamp)=>{
-    // console.log(moment(parseInt(timestamp)));
-    // return moment(timestamp).format('L');
     return moment.unix(parseInt(timestamp)).format('L');
 }
