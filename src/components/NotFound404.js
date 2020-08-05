@@ -1,11 +1,11 @@
-import React from 'React';
+import React from 'react';
 
 function NotFound404(props){
     return(
-        <div class="container">
+        <div className="container">
             <h1>Sorry, nothing here!</h1>
-            {props.children}
         </div>
     );
 }
+
 export default NotFound404;
