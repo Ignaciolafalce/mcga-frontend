@@ -112,7 +112,7 @@ function SignUpForm(props) {
 
             {!props.error && props.message &&
                 <Alert variant="success">
-                    User account successfully created you can <Link to='/signin'>sign in</Link> now!
+                    {props.successMessage}
                 </Alert>
             }
         </Form>
