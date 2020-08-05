@@ -57,7 +57,7 @@ export function signIn({ username, password }) {
 
             })
             .catch(error => {
-                if (!error.response && error.response.data  && error.response.data.message) {
+                if (error.response && error.response.data  && error.response.data.message) {
                     defaultErrorMessage = error.response.data.message;
                 }
                 dispatch({ type: AUTH_USER_SIGNIN_ERROR, payload: { message: defaultErrorMessage } });
