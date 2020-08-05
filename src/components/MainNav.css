@@ -1,0 +1,78 @@
+#navbar-brand{
+    color: #FFF;
+    font-size: 1.5em;
+    padding:0;
+    margin:0;
+    font-weight: 1000;
+    /* color:#000!important; */
+    display: flex;
+    align-items:center;
+}
+.navbar-color{
+    /* background: #96adca; */
+    /* border-bottom:2px solid #1e334d; */
+}
+
+.navlink-default{
+    font-weight: 800;
+    color: #ECECEC!important;
+    text-align: center;
+}
+.navlink-default-active{
+    text-align: center;
+    border-bottom: 5px solid #f28800;
+    color: #f28800!important;
+}
+
+.navlink-signin{
+    padding-left: 10px!important;
+    border-radius: 12px;
+    margin-right: 5px;
+    background: green;
+    font-weight: 1000;
+    display: flex;
+    align-items:center;
+ }
+ .link-signup{
+     padding: 5px;
+    color:#fff!important;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /* align-items:flex-end; */
+ }
+ .link-signup:hover{
+    /* color:blue!important; */
+    text-decoration: underline!important;
+    cursor: pointer;
+ }
+
+ #signin-button{
+    margin:0;
+    margin-top: px;
+    padding: 0!important;
+    /* background: red!important; */
+    /* background: green; */
+}
+
+/* #signin-button{ */
+    #signin-navlink{
+        padding: 0 10px;
+        color:#fff;
+    display: flex;
+    align-items:center;
+     /* margin: 10px 0px 10px 0px; */
+     /* color:white!important; */
+     /* padding:0px 0px 0px 0px;
+     margin-right: 5px; */
+ }
+ #signin-navlink:hover{
+     color:#DDD;
+}
+.signin-logo{
+    height: 32px;
+    /* background: red; */
+    color:white;
+    padding: 5px;
+}
