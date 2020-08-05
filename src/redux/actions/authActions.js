@@ -11,6 +11,8 @@ import {
 import axios from 'axios';
 import { API_URL } from '../../config';
 
+let defaultErrorMessage = 'Something is broken'; //use a constant later
+
 export function signUp({ username, email, password }) {
     return (dispatch) => {
         dispatch({ type: AUTH_USER_SIGNUP_PENDING, payload: {} });
@@ -29,7 +31,10 @@ export function signUp({ username, email, password }) {
                 dispatch({ type: AUTH_USER_SIGNUP_SUCCESS, payload: { message: response.message } });
             })
             .catch(error => {
-                dispatch({ type: AUTH_USER_SIGNUP_ERROR, payload: { message: error.response.data.message } });
+                if (error.response && error.response.data && error.response.data.message) {
+                    defaultErrorMessage = error.response.data.message;
+                }
+                dispatch({ type: AUTH_USER_SIGNUP_ERROR, payload: { message: defaultErrorMessage } });
             });
     }
 }
@@ -52,7 +57,10 @@ export function signIn({ username, password }) {
 
             })
             .catch(error => {
-                dispatch({ type: AUTH_USER_SIGNIN_ERROR, payload: { message: error.response.data.message } });
+                if (!error.response && error.response.data  && error.response.data.message) {
+                    defaultErrorMessage = error.response.data.message;
+                }
+                dispatch({ type: AUTH_USER_SIGNIN_ERROR, payload: { message: defaultErrorMessage } });
             });
     }
 }
