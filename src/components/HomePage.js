@@ -9,15 +9,10 @@ const mapStateToProps = (state) => {
 }
 
 function HomePage(props) {
-    const [showDefaultModal, setShowDefaultModal] = useState(true);
-    const toggleShowDefaultModal = () => {
-        setShowDefaultModal(!showDefaultModal);
-    }
     return (
         <div className="">
-            {!props.isAuth && <div>Home Contenido para usuario no autenticado</div>}
-            {props.isAuth && <div>Home Contenido para usuario autenticado</div>}
-            {/* <DefaultModal title="Example" show={showDefaultModal} handleClose={toggleShowDefaultModal}></DefaultModal> */}
+            {!props.isAuth && <div>No auth content</div>}
+            {props.isAuth && <div>Auth Content</div>}
         </div>
     );
 }
