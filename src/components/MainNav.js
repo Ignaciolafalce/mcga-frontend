@@ -36,9 +36,9 @@ function MainNav(props) {
 
                             <Nav className="mr-auto">
                                 <Fragment>
-                                    <Nav.Link as={NavLink} to="/Home" className="navlink-default" activeClassName="navlink-default-active">Home</Nav.Link>
-                                    <Nav.Link as={NavLink} to="/Boards" className="navlink-default" activeStyle={{ color: 'red' }}> Boards</Nav.Link>
-                                    <Nav.Link as={NavLink} to="/Notes" className="navlink-default" activeStyle={{ color: 'red' }}> Notes</Nav.Link>
+                                    <Nav.Link as={NavLink} to="/home" className="navlink-default" activeClassName="navlink-default-active">Home</Nav.Link>
+                                    <Nav.Link as={NavLink} to="/boards" className="navlink-default" activeClassName="navlink-default-active"> Boards</Nav.Link>
+                                    <Nav.Link as={NavLink} to="/notes" className="navlink-default" activeClassName="navlink-default-active"> Notes</Nav.Link>
                                 </Fragment>
                             </Nav>
                             <Nav>
