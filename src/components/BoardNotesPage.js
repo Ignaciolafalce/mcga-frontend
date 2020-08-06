@@ -75,7 +75,7 @@ function BoardNotesPage(props) {
     return (
         <PrivateRoute>
             {(props.board || props.notes) && <Fragment>
-                {props.isLoadingBoard || props.isLoadingNotes &&
+                {(props.isLoadingBoard || props.isLoadingNotes) &&
                     <Loader isVisible={true} />
                 }
             </Fragment>
@@ -93,7 +93,7 @@ function BoardNotesPage(props) {
                         </div>
                     </div>
 
-                    {props.isLoadingBoard || props.isLoadingNotes &&
+                    {(props.isLoadingBoard || props.isLoadingNotes) &&
                         <Loader isVisible={true} />
                     }
 
