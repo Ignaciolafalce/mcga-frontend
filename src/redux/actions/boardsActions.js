@@ -9,7 +9,7 @@ import {
     BOARDS_BOARD_GET_SUCCESS,
     BOARDS_BOARD_DELETE_SUCCESS,
     BOARDS_BOARD_ADD_SUCCESS,
-    BOARDS_BOARD_EDIT_SUCCESS,
+    BOARDS_BOARD_EDIT_SUCCESS
 } from './types';
 import store from '../store'
 
@@ -41,7 +41,6 @@ export function getAllBoards() {
             });
     }
 }
-
 
 export function getBoardById(boardId) {
     return (dispatch) => {

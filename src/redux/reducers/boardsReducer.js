@@ -21,7 +21,9 @@ const initState = {
         isLoading: false,
         error: false,
         message: null,
-        data: {}
+        data: {
+            notes:[]
+        }
     }
 }
 
@@ -78,7 +80,6 @@ function boardsReducer(state = initState, action) {
         case BOARDS_BOARD_GET_SUCCESS:
             return {
                 ...state,
-                list: [...state.list, action.payload.data.board],
                 board: {
                     isLoading: false,
                     error: false,
