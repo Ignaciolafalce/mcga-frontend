@@ -104,6 +104,22 @@ function authReducer(state = authState, action) {
                     message: null
                 }
             }
+        // case AUTH_USER_LOGOUT:
+        //     return {
+        //         isAuth: false,
+        //         signIn: {
+        //             isLoading: false,
+        //             error: false,
+        //             message: null,
+        //         },
+        //         signUp: {
+        //             isLoading: false,
+        //             error: false,
+        //             message: null,
+        //         },
+        //         user: {},
+        //         token: '',
+        //     }
         default:
             return state
     }

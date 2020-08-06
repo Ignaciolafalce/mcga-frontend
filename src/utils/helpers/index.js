@@ -7,6 +7,11 @@ export const isNullOrEmty = (property) => {
     return false;
 }
 
+export const isEmailValid = (email) => {
+    var re = /\S+@\S+\.\S+/;
+    return re.test(email);
+}
+
 export const formatDateToString = (timestamp)=>{
     return moment.unix(parseInt(timestamp)).format('L');
 }

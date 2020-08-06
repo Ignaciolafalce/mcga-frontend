@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { signUp, clearSignUp } from '../redux/actions/authActions';
-import { isNullOrEmty } from '../utils/helpers/index';
+import { isNullOrEmty, isEmailValid } from '../utils/helpers/index';
 import Loader from './Loader';
 
 const mapStateToProps = (state) => {
@@ -40,7 +40,7 @@ function SignUpForm(props) {
 
         const formPropertiesValidations = {
             "Username": !isNullOrEmty(formUser.username),
-            "Email": !isNullOrEmty(formUser.email),
+            "Email": !isNullOrEmty(formUser.email) && isEmailValid(formUser.email),
             "Password": !isNullOrEmty(formUser.password),
             "Confirm Password": !isNullOrEmty(formUser.confirmPassword),
         };

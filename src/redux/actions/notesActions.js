@@ -67,7 +67,7 @@ export function getNotesByBoard(boardId) {
 
 export function getNoteById(noteId) {
     return (dispatch) => {
-        dispatch({ type: BOARDS_BOARD_PENDING, payload: {} });
+        dispatch({ type: NOTES_NOTE_PENDING, payload: {} });
         axios({
             url: `${API_URL}/api/notes/${noteId}`,
             method: "get",
@@ -75,22 +75,22 @@ export function getNoteById(noteId) {
             headers: { Authorization: `Bearer ${store.getState().auth.token}` }
         }).then(response => response.data).then(response => {
             if (!response.data || response.error) {
-                return dispatch({ type: BOARDS_BOARD_ERROR, payload: { message: response.message } });
+                return dispatch({ type: NOTES_NOTE_ERROR, payload: { message: response.message } });
             }
-            dispatch({ type: BOARDS_BOARD_GET_SUCCESS, payload: { message: response.message, data: response.data } });
+            dispatch({ type: NOTES_NOTE_GET_SUCCESS, payload: { message: response.message, data: response.data } });
 
         }).catch(error => {
             if (error.response && error.response.data && error.response.data.message) {
                 defaultErrorMessage = error.response.data.message;
             }
-            dispatch({ type: BOARDS_BOARD_ERROR, payload: { message: error.response.data.message } });
+            dispatch({ type: NOTES_NOTE_ERROR, payload: { message: error.response.data.message } });
         });
     }
 }
 
 export function addNote({ text, boardId }) {
     return (dispatch) => {
-        dispatch({ type: BOARDS_BOARD_PENDING, payload: {} });
+        dispatch({ type: NOTES_NOTE_PENDING, payload: {} });
         const board = { text, boardId };
         axios({
             url: `${API_URL}/api/notes/add`,
@@ -100,71 +100,71 @@ export function addNote({ text, boardId }) {
         }).then(response => response.data)
             .then(response => {
                 if (!response.data || response.error) {
-                    return dispatch({ type: BOARDS_BOARD_ERROR, payload: { message: response.message } });
+                    return dispatch({ type: NOTES_NOTE_ERROR, payload: { message: response.message } });
                 }
-                dispatch({ type: BOARDS_BOARD_ADD_SUCCESS, payload: { message: response.message, data: response.data } });
+                dispatch({ type: NOTES_NOTE_ADD_SUCCESS, payload: { message: response.message, data: response.data } });
 
             }).catch(error => {
                 if (error.response && error.response.data && error.response.data.message) {
                     defaultErrorMessage = error.response.data.message;
                 }
-                dispatch({ type: BOARDS_BOARD_ERROR, payload: { message: defaultErrorMessage } });
+                dispatch({ type: NOTES_NOTE_ERROR, payload: { message: defaultErrorMessage } });
             });
     }
 }
 
 export function editNote(noteId, { text }) {
     return (dispatch) => {
-        dispatch({ type: BOARDS_BOARD_PENDING, payload: {} });
+        dispatch({ type: NOTES_NOTE_PENDING, payload: {} });
         const board = { text };
         axios({
-            url: `${API_URL}/api/boards/edit/${noteId}`,
+            url: `${API_URL}/api/notes/edit/${noteId}`,
             method: "put",
             data: board,
             headers: { Authorization: `Bearer ${store.getState().auth.token}` }
         }).then(response => response.data).then(response => {
             if (!response.data || response.error) {
-                return dispatch({ type: BOARDS_BOARD_ERROR, payload: { message: response.message } });
+                return dispatch({ type: NOTES_NOTE_ERROR, payload: { message: response.message } });
             }
             console.log(response);
-            dispatch({ type: BOARDS_BOARD_EDIT_SUCCESS, payload: { message: response.message, data: response.data } });
+            dispatch({ type: NOTES_NOTE_EDIT_SUCCESS, payload: { message: response.message, data: response.data } });
 
         }).catch(error => {
             if (error.response && error.response.data && error.response.data.message) {
                 defaultErrorMessage = error.response.data.message;
             }
             console.log(error);
-            dispatch({ type: BOARDS_BOARD_ERROR, payload: { message: defaultErrorMessage } });
+            dispatch({ type: NOTES_NOTE_ERROR, payload: { message: defaultErrorMessage } });
         });
     }
 }
 
 export function deleteNote(noteId) {
     return (dispatch) => {
-        dispatch({ type: BOARDS_BOARD_PENDING, payload: {} });
+        dispatch({ type: NOTES_NOTE_PENDING, payload: {} });
         axios({
-            url: `${API_URL}/api/boards/delete/${noteId}`,
+            url: `${API_URL}/api/notes/delete/${noteId}`,
             method: "delete",
             data: {},
             headers: { Authorization: `Bearer ${store.getState().auth.token}` }
         }).then(response => response.data)
             .then(response => {
                 if (!response.data || response.error) {
-                    return dispatch({ type: BOARDS_BOARD_ERROR, payload: { message: response.message } });
+                    return dispatch({ type: NOTES_NOTE_ERROR, payload: { message: response.message } });
                 }
-                dispatch({ type: BOARDS_BOARD_DELETE_SUCCESS, payload: { message: response.message, data: response.data } });
+                dispatch({ type: NOTES_NOTE_DELETE_SUCCESS, payload: { message: response.message, data: response.data } });
 
             }).catch(error => {
                 if (error.response && error.response.data && error.response.data.message) {
                     defaultErrorMessage = error.response.data.message;
                 }
-                dispatch({ type: BOARDS_BOARD_ERROR, payload: { message: defaultErrorMessage } });
+                dispatch({ type: NOTES_NOTE_ERROR, payload: { message: defaultErrorMessage } });
             });
     }
 }
 
-export function clearBoard() {
+export function clearNote() {
     return {
-        type: BOARDS_BOARD_CLEAR
+        type: NOTES_NOTE_CLEAR
     }
 }

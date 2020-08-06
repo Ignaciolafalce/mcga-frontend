@@ -1,44 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import DefaultModal from './DefaultModal';
-import { deleteBoard, clearBoard } from '../redux/actions/boardsActions';
+import { deleteNote, clearNote} from '../redux/actions/notesActions'
 import { Form, Button, Alert } from 'react-bootstrap';
 
 const mapStateToProps = (state) => {
     return {
-        isLoading: state.boards.board.isLoading,
-        error: state.boards.board.error,
-        message: state.boards.board.message,
+        isLoading: state.notes.note.isLoading,
+        error: state.notes.note.error,
+        message: state.notes.note.message,
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        deleteBoard: (boardId) => { dispatch(deleteBoard(boardId)) },
-        clearBoard: () => { dispatch(clearBoard()) }
+        deleteNote: (noteId) => { dispatch(deleteNote(noteId)) },
+        clearNote: () => { dispatch(clearNote()) }
     }
 }
 
-function DeleteBoardModal(props) {
+function DeleteNoteModal(props) {
 
-
-    const [selectedBoard, setSelectedBoard] = useState({});
-    const [isBoardSelected, setIsBoardSelected] = useState(false);
+    const [selectedNote, setSelectedNote] = useState({});
+    const [isNoteSelected, setIsNoteSelected] = useState(false);
     useEffect(() => {
-        if (props.selectedBoard) {
-            setSelectedBoard(props.selectedBoard);
-            setIsBoardSelected(true);
+        if (props.selectedNote) {
+            setSelectedNote(props.selectedNote);
+            setIsNoteSelected(true);
         }
-        props.clearBoard();
+        props.clearNote();
     }, []);
 
-    const onDeleteBoardHandler = (event) => {
+    const onDeleteNoteHandler = (event) => {
         event.preventDefault()
-        props.deleteBoard(selectedBoard._id);
+        props.deleteNote(selectedNote._id);
     }
 
     return (
-        <DefaultModal title="Delete Board" show={props.show} handleClose={props.handleClose}>
+        <DefaultModal title="Delete Note" show={props.show} handleClose={props.handleClose}>
             <Form>
 
                 {!props.error && props.message &&
@@ -49,16 +48,16 @@ function DeleteBoardModal(props) {
 
                 {props.error && props.message && <Alert variant="danger">{props.message}</Alert>}
 
-                {isBoardSelected && !props.error && !props.message &&
-                    <Form.Group controlId="formBasicBoardName">
+                {isNoteSelected && !props.error && !props.message &&
+                    <Form.Group controlId="formBasicNoteDelete">
                         <Form.Label>Are you sure you want to delete this board?</Form.Label>
-                        <Form.Text>if you do it you are going to delete {selectedBoard.name} board and all the notes that the board has.</Form.Text>
+                        <Form.Text>There is no way back :(</Form.Text>
                     </Form.Group>
                 }
                 <div className="row">
                     <div className="col">
-                        {isBoardSelected && !props.error && !props.message &&
-                            <Button variant="danger" type="submit" block onClick={onDeleteBoardHandler}>
+                        {isNoteSelected && !props.error && !props.message &&
+                            <Button variant="danger" type="submit" block onClick={onDeleteNoteHandler}>
                                 Yes, delete it!
                             </Button>
                         }
@@ -74,4 +73,4 @@ function DeleteBoardModal(props) {
     );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DeleteBoardModal);
+export default connect(mapStateToProps, mapDispatchToProps)(DeleteNoteModal);

@@ -96,9 +96,11 @@ function BoardsPage(props) {
                                             </div>
                                             <div className="row justify-content-between">
                                                 <div className="col-5 m-2">
-                                                    <Button variant="secondary" className="btn-delete-board">
-                                                        <Link to={`/board/${board._id}`} className="mr-2">Go to this board</Link>
-                                                    </Button>
+                                                    <Link to={`/board/${board._id}`} className="mr-2 btn-go-board">
+                                                        <Button variant="secondary">
+                                                            Go to this board
+                                                        </Button>
+                                                    </Link>
                                                 </div>
                                                 <div className="col text-right m-2">
                                                     <Button variant="primary" className="mr-2 mb-2" onClick={() => {

@@ -51,6 +51,14 @@ function boardsReducer(state = initState, action) {
                 message: action.payload.message,
                 list: [...action.payload.data.notes]
             }
+            case NOTES_GETBYBOARD_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                error: false,
+                message: action.payload.message,
+                list: [...action.payload.data.notes]
+            }
         case NOTES_CLEAR:
             return {
                 ...state,
