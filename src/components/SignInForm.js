@@ -35,7 +35,7 @@ function SignInForm(props) {
     });
 
     //onclick signup button handler
-    const signInButtonEventHandler = (event) => {
+    const onSignInHandler = (event) => {
         event.preventDefault();
 
         const formPropertiesValidations = {
@@ -85,7 +85,7 @@ function SignInForm(props) {
 
                 <Loader isVisible={props.isLoading}></Loader>
 
-                <Button variant="primary" type="submit" block onClick={signInButtonEventHandler}>
+                <Button variant="primary" type="submit" block onClick={onSignInHandler}>
                     Sign in
                 </Button>
 
