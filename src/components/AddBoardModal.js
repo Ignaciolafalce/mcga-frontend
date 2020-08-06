@@ -82,23 +82,21 @@ function AddBoardModal(props) {
 
     return (
         <DefaultModal title={isBoardSelected ? "Edit Board" : "Add new Board"} show={props.show} handleClose={props.handleClose}>
-            {!props.error && props.message &&
-                <Alert variant="success">
-                    {props.message}
-                </Alert>
-            }
             <Form>
-                <Fragment>
-                    {(formBoard.errorMessages.length > 0 || props.error) &&
-                        <Fragment>
-                            {formBoard.errorMessages.length > 0 && formBoard.errorMessages.map((errorMsg, i) =>
-                                <Alert variant="danger" key={`inavlid${i}`} >{errorMsg} </Alert>
-                            )}
+                {!props.error && props.message &&
+                    <Alert variant="success">
+                        {props.message}
+                    </Alert>
+                }
+                {(formBoard.errorMessages.length > 0 || props.error) &&
+                    <Fragment>
+                        {formBoard.errorMessages.length > 0 && formBoard.errorMessages.map((errorMsg, i) =>
+                            <Alert variant="danger" key={`inavlid${i}`} >{errorMsg} </Alert>
+                        )}
 
-                            {props.error && props.message && <Alert variant="danger">{props.message}</Alert>}
-                        </Fragment>
-                    }
-                </Fragment>
+                        {props.error && props.message && <Alert variant="danger">{props.message}</Alert>}
+                    </Fragment>
+                }
                 <Form.Group controlId="formBasicBoardName">
                     <Form.Label>Name</Form.Label>
                     <Form.Control type="text" placeholder={isBoardSelected ? "Enter the edited board name" : "Enter board name"}
