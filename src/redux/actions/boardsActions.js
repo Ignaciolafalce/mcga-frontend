@@ -2,7 +2,7 @@ import {
     BOARDS_PENDING,
     BOARDS_ERROR,
     BOARDS_GETALL_SUCCESS,
-    BOARDS_CLEAR,
+    // BOARDS_CLEAR,
     BOARDS_BOARD_PENDING,
     BOARDS_BOARD_ERROR,
     BOARDS_BOARD_CLEAR,
@@ -26,18 +26,19 @@ export function getAllBoards() {
             url: `${API_URL}/api/boards/`,
             method: "get",
             headers: { Authorization: `Bearer ${store.getState().auth.token}` }
-        }).then(response => response.data).then(response => {
-            if (!response.data || response.error) {
-                return dispatch({ type: BOARDS_ERROR, payload: { message: response.message } });
-            }
-            dispatch({ type: BOARDS_GETALL_SUCCESS, payload: { message: response.message, data: response.data } });
+        }).then(response => response.data)
+            .then(response => {
+                if (!response.data || response.error) {
+                    return dispatch({ type: BOARDS_ERROR, payload: { message: response.message } });
+                }
+                dispatch({ type: BOARDS_GETALL_SUCCESS, payload: { message: response.message, data: response.data } });
 
-        }).catch(error => {
-            if (error.response && error.response.data && error.response.data.message) {
-                defaultErrorMessage = error.response.data.message;
-            }
-            dispatch({ type: BOARDS_ERROR, payload: { message: defaultErrorMessage } });
-        });
+            }).catch(error => {
+                if (error.response && error.response.data && error.response.data.message) {
+                    defaultErrorMessage = error.response.data.message;
+                }
+                dispatch({ type: BOARDS_ERROR, payload: { message: defaultErrorMessage } });
+            });
     }
 }
 
@@ -74,18 +75,19 @@ export function addBoard({ name }) {
             method: "post",
             data: board,
             headers: { Authorization: `Bearer ${store.getState().auth.token}` }
-        }).then(response => response.data).then(response => {
-            if (!response.data || response.error) {
-                return dispatch({ type: BOARDS_BOARD_ERROR, payload: { message: response.message } });
-            }
-            dispatch({ type: BOARDS_BOARD_ADD_SUCCESS, payload: { message: response.message, data: response.data } });
+        }).then(response => response.data)
+            .then(response => {
+                if (!response.data || response.error) {
+                    return dispatch({ type: BOARDS_BOARD_ERROR, payload: { message: response.message } });
+                }
+                dispatch({ type: BOARDS_BOARD_ADD_SUCCESS, payload: { message: response.message, data: response.data } });
 
-        }).catch(error => {
-            if (error.response && error.response.data && error.response.data.message) {
-                defaultErrorMessage = error.response.data.message;
-            }
-            dispatch({ type: BOARDS_BOARD_ERROR, payload: { message: error.response.data.message } });
-        });
+            }).catch(error => {
+                if (error.response && error.response.data && error.response.data.message) {
+                    defaultErrorMessage = error.response.data.message;
+                }
+                dispatch({ type: BOARDS_BOARD_ERROR, payload: { message: defaultErrorMessage } });
+            });
     }
 }
 
@@ -102,13 +104,15 @@ export function editBoard(boardId, { name }) {
             if (!response.data || response.error) {
                 return dispatch({ type: BOARDS_BOARD_ERROR, payload: { message: response.message } });
             }
-            dispatch({ type: BOARDS_BOARD_EDIT_SUCCESS, payload: { message: response.message, data: response.data.board } });
+            console.log(response);
+            dispatch({ type: BOARDS_BOARD_EDIT_SUCCESS, payload: { message: response.message, data: response.data } });
 
         }).catch(error => {
             if (error.response && error.response.data && error.response.data.message) {
                 defaultErrorMessage = error.response.data.message;
             }
-            dispatch({ type: BOARDS_BOARD_ERROR, payload: { message: error.response.data.message } });
+            console.log(error);
+            dispatch({ type: BOARDS_BOARD_ERROR, payload: { message: defaultErrorMessage } });
         });
     }
 }
@@ -116,24 +120,24 @@ export function editBoard(boardId, { name }) {
 export function deleteBoard(boardId) {
     return (dispatch) => {
         dispatch({ type: BOARDS_BOARD_PENDING, payload: {} });
-        console.log("despacho?");
         axios({
             url: `${API_URL}/api/boards/delete/${boardId}`,
             method: "delete",
             data: {},
             headers: { Authorization: `Bearer ${store.getState().auth.token}` }
-        }).then(response => response.data).then(response => {
-            if (!response.data || response.error) {
-                return dispatch({ type: BOARDS_BOARD_ERROR, payload: { message: response.message } });
-            }
-            dispatch({ type: BOARDS_BOARD_DELETE_SUCCESS, payload: { message: response.message, data: response.data.board } });
+        }).then(response => response.data)
+            .then(response => {
+                if (!response.data || response.error) {
+                    return dispatch({ type: BOARDS_BOARD_ERROR, payload: { message: response.message } });
+                }
+                dispatch({ type: BOARDS_BOARD_DELETE_SUCCESS, payload: { message: response.message, data: response.data } });
 
-        }).catch(error => {
-            if (error.response && error.response.data && error.response.data.message) {
-                defaultErrorMessage = error.response.data.message;
-            }
-            dispatch({ type: BOARDS_BOARD_ERROR, payload: { message: defaultErrorMessage } });
-        });
+            }).catch(error => {
+                if (error.response && error.response.data && error.response.data.message) {
+                    defaultErrorMessage = error.response.data.message;
+                }
+                dispatch({ type: BOARDS_BOARD_ERROR, payload: { message: defaultErrorMessage } });
+            });
     }
 }
 

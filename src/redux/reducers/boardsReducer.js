@@ -5,7 +5,6 @@ import {
     BOARDS_CLEAR,
     BOARDS_BOARD_PENDING,
     BOARDS_BOARD_ERROR,
-    BOARDS_BOARD_SUCCESS,
     BOARDS_BOARD_CLEAR,
     BOARDS_BOARD_GET_SUCCESS,
     BOARDS_BOARD_ADD_SUCCESS,
@@ -99,9 +98,15 @@ function boardsReducer(state = initState, action) {
                 }
             }
         case BOARDS_BOARD_EDIT_SUCCESS:
+            let newListBoardsEdited = [...state.list].map(board => {
+                if(board._id === action.payload.data.board._id){
+                    board = action.payload.data.board;
+                }
+                return board;
+            });
             return {
                 ...state,
-                list: [...state.list, action.payload.data.board],
+                list: newListBoardsEdited,
                 board: {
                     isLoading: false,
                     error: false,
@@ -110,10 +115,10 @@ function boardsReducer(state = initState, action) {
                 }
             }
         case BOARDS_BOARD_DELETE_SUCCESS:
-            let newListBoards = [...state.list].filter(board => board._id !== action.payload.data._id);
+            let newListBoardsDelete = [...state.list].filter(board => board._id !== action.payload.data.board._id);
             return {
                 ...state,
-                list: newListBoards,
+                list: newListBoardsDelete,
                 board: {
                     isLoading: false,
                     error: false,
