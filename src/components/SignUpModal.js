@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 
 function SignUpModal(props) {
     return (
-        <DefaultModal show={props.show} handleClose={props.handleClose}>
+        <DefaultModal title="Create an account" show={props.show} handleClose={props.handleClose}>
             <SignUpForm successMessage={
                 <Fragment>
                     User account successfully created you can <Link to='/signin' onClick={props.handleClose} >sign in</Link> now!

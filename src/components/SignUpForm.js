@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { signUp, clearSignUp } from '../redux/actions/authActions';
 import { isNullOrEmty } from '../utils/helpers/index';
-import { Link } from 'react-router-dom';
 import Loader from './Loader';
 
 const mapStateToProps = (state) => {
@@ -22,6 +21,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 function SignUpForm(props) {
+
     useEffect(() => {
         props.clearSignUp();
     }, []);
@@ -35,7 +35,7 @@ function SignUpForm(props) {
     });
 
     //onclick signup button handler
-    const signUpButtonEventHandler = (event) => {
+    const onSignUpHandler = (event) => {
         event.preventDefault();
 
         const formPropertiesValidations = {
@@ -99,14 +99,13 @@ function SignUpForm(props) {
 
                     <Loader isVisible={props.isLoading}></Loader>
 
-                    <Button variant="primary" type="submit" block onClick={signUpButtonEventHandler}>
+                    <Button variant="primary" type="submit" block onClick={onSignUpHandler}>
                         Sign me up
-                        </Button>
+                    </Button>
 
                     <Form.Text className="">
-                       {props.children}
+                        {props.children}
                     </Form.Text>
-
 
                 </Fragment>}
 
