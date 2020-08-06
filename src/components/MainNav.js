@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { Nav, Navbar } from 'react-bootstrap';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './MainNav.css';
 import signInLogo from '../assets/images/signin.png';
 import { Button } from 'react-bootstrap';
@@ -55,7 +55,7 @@ function MainNav(props) {
                                     </Nav.Link>
                             </Button>
                             {/* INVOKE SIGN UP MODAL */}
-                            <Link onClick={toggleShowSignUpModal} className="link-signup">or sign up here!</Link>
+                            <Button to={null} onClick={toggleShowSignUpModal} id="signup-button">or sign up here!</Button>
                             <SignUpModal show={showSignUpModal} handleClose={toggleShowSignUpModal}></SignUpModal>
 
                         </Nav>
