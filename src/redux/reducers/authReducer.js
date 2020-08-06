@@ -6,7 +6,8 @@ import {
     AUTH_USER_SIGNIN_PENDING,
     AUTH_USER_SIGNIN_ERROR,
     AUTH_USER_SIGNIN_SUCCESS,
-    AUTH_USER_SIGNIN_CLEAR
+    AUTH_USER_SIGNIN_CLEAR,
+    AUTH_USER_LOGOUT
 
 } from '../actions/types'
 
@@ -104,22 +105,22 @@ function authReducer(state = authState, action) {
                     message: null
                 }
             }
-        // case AUTH_USER_LOGOUT:
-        //     return {
-        //         isAuth: false,
-        //         signIn: {
-        //             isLoading: false,
-        //             error: false,
-        //             message: null,
-        //         },
-        //         signUp: {
-        //             isLoading: false,
-        //             error: false,
-        //             message: null,
-        //         },
-        //         user: {},
-        //         token: '',
-        //     }
+        case AUTH_USER_LOGOUT:
+            return {
+                isAuth: false,
+                signIn: {
+                    isLoading: false,
+                    error: false,
+                    message: null,
+                },
+                signUp: {
+                    isLoading: false,
+                    error: false,
+                    message: null,
+                },
+                user: {},
+                token: '',
+            }
         default:
             return state
     }

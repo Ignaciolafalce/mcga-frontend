@@ -7,6 +7,7 @@ import {
     AUTH_USER_SIGNIN_ERROR,
     AUTH_USER_SIGNIN_SUCCESS,
     AUTH_USER_SIGNIN_CLEAR,
+    AUTH_USER_LOGOUT
 } from './types';
 import axios from 'axios';
 import { API_URL } from '../../config';
@@ -75,3 +76,10 @@ export function clearSignIn() {
         type: AUTH_USER_SIGNIN_CLEAR,
     }
 }
+
+export function logout() {
+    return {
+        type: AUTH_USER_LOGOUT,
+    }
+}
+

@@ -6,11 +6,18 @@ import './MainNav.css';
 import signInLogo from '../assets/images/signin.png';
 import { Button } from 'react-bootstrap';
 import SignUpModal from './SignUpModal';
+import { logout } from '../redux/actions/authActions';
 
 
 const mapStateToProps = (state) => {
     return {
         isAuth: state.auth.isAuth
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return{
+        logout:() => {dispatch(logout())}
     }
 }
 
@@ -22,7 +29,7 @@ function MainNav(props) {
     }
 
     const logOutButtonHandler = () => {
-
+        props.logout();
     }
 
     return (
@@ -66,4 +73,4 @@ function MainNav(props) {
     );
 }
 
-export default connect(mapStateToProps)(MainNav);
+export default connect(mapStateToProps, mapDispatchToProps)(MainNav);
