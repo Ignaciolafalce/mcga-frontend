@@ -16,7 +16,7 @@ function SignInPage(props) {
             {!props.isAuth &&
                 <div className="container">
                     <div className="row justify-content-center">
-                        <div className="col-11 col-md-6 bg-light p-4 rounded">
+                        <div className="col-11 col-md-5 bg-light p-4 rounded">
                             <SignInForm></SignInForm>
                         </div>
                     </div>
