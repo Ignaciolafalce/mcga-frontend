@@ -18,7 +18,7 @@ function HomePage(props) {
     }
 
     return (
-        <div className="containter">
+        <div className="container">
             {!props.isAuth && <div className="row justify-content-center ">
                 <div className="col-8 p-2 bg-dark rounded">
                     <h3 className="text-center p-5 rounded text-white">

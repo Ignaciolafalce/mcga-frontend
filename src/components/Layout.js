@@ -2,7 +2,6 @@ import React from 'react';
 import MainNav from './MainNav';
 
 function Layout(props){
-    console.log(props);
     return(
         <div className="">
             <MainNav></MainNav>
