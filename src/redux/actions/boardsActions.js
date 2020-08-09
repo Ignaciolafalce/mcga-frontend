@@ -14,9 +14,9 @@ import {
 import store from '../store'
 
 import axios from 'axios';
-import { API_URL } from '../../config';
+import { API_URL, DEFAULT_ERROR_FETCH_MESSAGE } from '../../config';
 
-let defaultErrorMessage = 'Something is broken'; //use a constant later
+let defaultErrorMessage = DEFAULT_ERROR_FETCH_MESSAGE;
 
 
 export function getAllBoards() {
