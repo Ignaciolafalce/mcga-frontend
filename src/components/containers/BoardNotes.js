@@ -6,8 +6,8 @@ import { getBoardById } from '../../redux/actions/boardsActions';
 import { getNotesByBoard } from '../../redux/actions/notesActions';
 import Loader from '../shared/Loader';
 import { Button } from 'react-bootstrap';
-import AddNoteModal from '../AddNoteModal';
-import DeleteNoteModal from '../DeleteNoteModal';
+import AddNoteModal from '../notes/AddNoteModal';
+import DeleteNoteModal from '../notes/DeleteNoteModal';
 
 
 const mapStateToProps = (state) => {
@@ -33,7 +33,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-function BoardNotesPage(props) {
+function BoardNotes(props) {
 
     const [boardId] = useState(props.match.params.boardId);
 
@@ -150,4 +150,4 @@ function BoardNotesPage(props) {
     );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BoardNotesPage);
+export default connect(mapStateToProps, mapDispatchToProps)(BoardNotes);

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import DefaultModal from './shared/DefaultModal';
-import { deleteBoard, clearBoard } from '../redux/actions/boardsActions';
+import DefaultModal from '../shared/DefaultModal';
+import { deleteBoard, clearBoard } from '../../redux/actions/boardsActions';
 import { Form, Button, Alert } from 'react-bootstrap';
 
 const mapStateToProps = (state) => {

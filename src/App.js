@@ -6,10 +6,10 @@ import store from './redux/store';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Layout from './components/shared/Layout';
 import NotFound404 from './components/shared/NotFound404';
-import HomePage from './components/containers/Home';
-import SignInPage from './components/containers/SignIn';
-import BoardsPage from './components/containers/Boards';
-import BoardNotesPage from './components/containers/BoardNotes';
+import Home from './components/containers/Home';
+import SignIn from './components/containers/SignIn';
+import Boards from './components/containers/Boards';
+import BoardNotes from './components/containers/BoardNotes';
 import AuthWrapper from './components/shared/AuthWrapper';
 
 class App extends React.Component {
@@ -22,10 +22,10 @@ class App extends React.Component {
             <Layout>
               <Switch>
                 <Route exact path="/" render={(routeProps) => { return routeProps.history.push('/home') }} />
-                <Route exact path="/home" component={HomePage} />
-                <Route exact path="/signin" component={SignInPage} />
-                <Route exact path="/board/:boardId" component={BoardNotesPage} />
-                <Route exact path="/boards" component={BoardsPage} />
+                <Route exact path="/home" component={Home} />
+                <Route exact path="/signin" component={SignIn} />
+                <Route exact path="/board/:boardId" component={BoardNotes} />
+                <Route exact path="/boards" component={Boards} />
                 <Route component={NotFound404} />
               </Switch>
             </Layout>

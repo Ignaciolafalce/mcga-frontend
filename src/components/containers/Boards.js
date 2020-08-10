@@ -6,9 +6,8 @@ import { getAllBoards } from '../../redux/actions/boardsActions';
 import Loader from '../shared/Loader';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import AddBoardModal from '../AddBoardModal';
-import DeleteBoardModal from '../DeleteBoardModal';
-
+import AddBoardModal from '../boards/AddBoardModal';
+import DeleteBoardModal from '../boards/DeleteBoardModal';
 
 const mapStateToProps = (state) => {
     return {
@@ -26,7 +25,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-function BoardsPage(props) {
+function Boards(props) {
 
     const { getAllBoards } = props;
     useEffect(() => {
@@ -143,4 +142,4 @@ function BoardsPage(props) {
     );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BoardsPage);
+export default connect(mapStateToProps, mapDispatchToProps)(Boards);

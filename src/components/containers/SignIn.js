@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import SignInForm from '../SignInForm';
+import SignInForm from '../auth/SignInForm';
 
 const mapStateToProps = (state) => {
     return {
@@ -9,7 +9,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-function SignInPage(props) {
+function SignIn(props) {
     return (
         <Fragment>
             {props.isAuth && <Redirect to="/"></Redirect>}
@@ -26,4 +26,4 @@ function SignInPage(props) {
     );
 }
 
-export default connect(mapStateToProps)(SignInPage);
+export default connect(mapStateToProps)(SignIn);

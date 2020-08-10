@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import DefaultModal from './shared/DefaultModal';
-import { deleteNote, clearNote} from '../redux/actions/notesActions'
+import DefaultModal from '../shared/DefaultModal';
+import { deleteNote, clearNote} from '../../redux/actions/notesActions'
 import { Form, Button, Alert } from 'react-bootstrap';
 
 const mapStateToProps = (state) => {

@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-function HomePage(props) {
+function Home(props) {
 
     const [showSignUpModal, SetShowSignUpModal] = useState(false);
     const toggleShowSignUpModal = () => {
@@ -41,4 +41,4 @@ function HomePage(props) {
     );
 }
 
-export default connect(mapStateToProps)(HomePage);
+export default connect(mapStateToProps)(Home);

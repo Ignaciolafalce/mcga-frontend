@@ -1,9 +1,9 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Form, Button, Alert } from 'react-bootstrap';
-import { signUp, clearSignUp } from '../redux/actions/authActions';
-import { isNullOrEmty, isEmailValid } from '../utils/helpers/index';
-import Loader from './shared/Loader';
+import { signUp, clearSignUp } from '../../redux/actions/authActions';
+import { isNullOrEmty, isEmailValid } from '../../utils/helpers/index';
+import Loader from '../shared/Loader';
 
 const mapStateToProps = (state) => {
     return {

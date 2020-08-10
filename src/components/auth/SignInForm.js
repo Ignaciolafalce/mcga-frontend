@@ -1,10 +1,10 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Form, Button, Alert } from 'react-bootstrap';
-import { signIn, clearSignIn } from '../redux/actions/authActions';
-import { isNullOrEmty } from '../utils/helpers/index';
+import { signIn, clearSignIn } from '../../redux/actions/authActions';
+import { isNullOrEmty } from '../../utils/helpers/index';
 import { Redirect, Link } from 'react-router-dom'
-import Loader from './shared/Loader';
+import Loader from '../shared/Loader';
 
 const mapStateToProps = (state) => {
     return {
