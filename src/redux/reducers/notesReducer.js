@@ -51,7 +51,7 @@ function boardsReducer(state = initState, action) {
                 message: action.payload.message,
                 list: [...action.payload.data.notes]
             }
-            case NOTES_GETBYBOARD_SUCCESS:
+        case NOTES_GETBYBOARD_SUCCESS:
             return {
                 ...state,
                 isLoading: false,
@@ -108,8 +108,10 @@ function boardsReducer(state = initState, action) {
             }
         case NOTES_NOTE_EDIT_SUCCESS:
             let newListNotesEdited = [...state.list].map(note => {
-                if(note._id === action.payload.data.note._id){
-                    note = action.payload.data.note;
+                if (note._id === action.payload.data.note._id) {
+                    note = { ...note, ...action.payload.data.note, board: note.board }
+
+                    // note = action.payload.data.note;
                 }
                 return note;
             });

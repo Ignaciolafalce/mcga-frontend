@@ -82,9 +82,9 @@ function BoardNotes(props) {
 
             {props.board && props.notes &&
                 <div className="container-fluid">
-                    <div className="row justify-content-center mb-2">
+                    <div className="row justify-content-between mb-2">
                         <div className="col-5">
-                            <h1> Notes</h1>
+                            <h1>Notes</h1>
                             <h3>from board:{props.board.name}</h3>
                         </div>
                         <div className="col-5 text-right">

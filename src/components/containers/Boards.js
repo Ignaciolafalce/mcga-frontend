@@ -63,10 +63,10 @@ function Boards(props) {
 
     return (
         <PrivateRoute>
-            <div className="container">
-                <div className="row justify-content-center mb-2">
+            <div className="container-fluid">
+                <div className="row justify-content-between mb-2">
                     <div className="col">
-                        <h1>Your boards</h1>
+                        <h1>All Your boards</h1>
                     </div>
                     <div className="col text-right">
                         <Button variant="warning" className="mr-2 mt-2" onClick={toggleAddBoardModal}>+ Add a new board</Button>

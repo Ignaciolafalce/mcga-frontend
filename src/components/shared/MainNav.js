@@ -45,7 +45,7 @@ function MainNav(props) {
                                 <Fragment>
                                     <Nav.Link as={NavLink} to="/home" className="navlink-default" activeClassName="navlink-default-active">Home</Nav.Link>
                                     <Nav.Link as={NavLink} to="/boards" className="navlink-default" activeClassName="navlink-default-active"> Boards</Nav.Link>
-                                    {/* <Nav.Link as={NavLink} to="/notes" className="navlink-default" activeClassName="navlink-default-active"> Notes</Nav.Link> */}
+                                    <Nav.Link as={NavLink} to="/notes" className="navlink-default" activeClassName="navlink-default-active"> Notes</Nav.Link>
                                 </Fragment>
                             </Nav>
                             <Nav>

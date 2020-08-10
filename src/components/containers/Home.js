@@ -32,7 +32,7 @@ function Home(props) {
                 <div className="row justify-content-center ">
                     <div className="col-8 p-2 bg-dark rounded">
                         <h3 className="text-center p-5 rounded text-white">
-                            Create Notes and Bords <Link to="boards">here!</Link>
+                            Create Notes and Boards <Link to="boards">here!</Link>
                         </h3>
                     </div>
                 </div>
