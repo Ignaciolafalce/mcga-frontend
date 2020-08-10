@@ -104,7 +104,7 @@ function AddNoteModal(props) {
                 }
                 <Form.Group controlId="formBasicNoteText">
                     <Form.Label>Text</Form.Label>
-                    <Form.Control type="text" placeholder={isNoteSelected ? "Enter the edited note text" : "Enter note text"}
+                    <Form.Control as="textarea" rows="3" placeholder={isNoteSelected ? "Enter the edited note text" : "Enter note text"}
                         value={formNote.text} onChange={(e) => { setFormNote({ ...formNote, text: e.target.value }) }} />
                 </Form.Group>
                 <div className="row">
