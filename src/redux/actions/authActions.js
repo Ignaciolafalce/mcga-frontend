@@ -54,11 +54,12 @@ export function signIn({ username, password }) {
                 if (!response.data || response.error) {
                     return dispatch({ type: AUTH_USER_SIGNIN_ERROR, payload: { message: response.message } });
                 }
+                localStorage.setItem('noteboards_t', response.data.access_token);
                 dispatch({ type: AUTH_USER_SIGNIN_SUCCESS, payload: { message: response.message, data: response.data } });
 
             })
             .catch(error => {
-                if (error.response && error.response.data  && error.response.data.message) {
+                if (error.response && error.response.data && error.response.data.message) {
                     defaultErrorMessage = error.response.data.message;
                 }
                 dispatch({ type: AUTH_USER_SIGNIN_ERROR, payload: { message: defaultErrorMessage } });
@@ -78,8 +79,27 @@ export function clearSignIn() {
 }
 
 export function logout() {
+    localStorage.removeItem('noteboards_t');
     return {
         type: AUTH_USER_LOGOUT,
     }
 }
 
+export function verifyToken() {
+    const token = localStorage.getItem('noteboards_t');
+    return (dispatch) => {
+        if (!token) {
+            return dispatch({ type: AUTH_USER_LOGOUT });
+        }
+        axios({
+            url: `${API_URL}/api/auth/verify`,
+            method: "post",
+            data: {},
+            headers: { Authorization: `Bearer ${token}` }
+        }).then(response => {
+            dispatch({ type: AUTH_USER_SIGNIN_SUCCESS, payload: { message: response.message, data: { access_token: token, user: response.data.user } } });
+        }).catch(error => {
+            dispatch({ type: AUTH_USER_LOGOUT });
+        });
+    }
+}
