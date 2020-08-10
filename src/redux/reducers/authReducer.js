@@ -13,7 +13,7 @@ import {
 
 const authState = {
     isAuth: false,
-    isAccessVerify:false,
+    isAccessVerified:false,
     signIn: {
         isLoading: false,
         error: false,
@@ -89,7 +89,7 @@ function authReducer(state = authState, action) {
             return {
                 ...state,
                 isAuth: true,
-                isAccessVerify: true,
+                isAccessVerified: true,
                 user: action.payload.data.user,
                 token: action.payload.data.access_token,
                 signIn: {
@@ -110,7 +110,7 @@ function authReducer(state = authState, action) {
         case AUTH_USER_LOGOUT:
             return {
                 isAuth: false,
-                isAccessVerify: true,
+                isAccessVerified: true,
                 signIn: {
                     isLoading: false,
                     error: false,

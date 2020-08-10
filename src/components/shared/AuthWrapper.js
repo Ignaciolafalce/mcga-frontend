@@ -6,7 +6,7 @@ import Loader from './Loader';
 const mapStateToProps = (state) => {
     return {
         isAuth: state.auth.isAuth,
-        isAcessVerify: state.auth.isAcessVerify
+        isAccessVerified: state.auth.isAccessVerified
     }
 }
 
@@ -25,8 +25,8 @@ function AuthWrapper(props) {
 
     return (
         <Fragment>
-            {!props.isAcessVerify && <Loader isVisible={true}></Loader>}
-            {props.isAcessVerify && <Fragment>{props.children}</Fragment>}
+            {!props.isAccessVerified && <Loader isVisible={true}></Loader>}
+            {props.isAccessVerified && <Fragment>{props.children}</Fragment>}
         </Fragment>
     );
 }
