@@ -5,6 +5,7 @@ import { signIn, clearSignIn } from '../../redux/actions/authActions';
 import { isNullOrEmty } from '../../utils/helpers/index';
 import { Redirect, Link } from 'react-router-dom'
 import Loader from '../shared/Loader';
+import SignUpModal from './SignUpModal';
 
 const mapStateToProps = (state) => {
     return {
@@ -24,6 +25,10 @@ const mapDispatchToProps = (dispatch) => {
 
 function SignInForm(props) {
 
+    const [showSignUpModal, SetShowSignUpModal] = useState(false);
+    const toggleShowSignUpModal = () => {
+        SetShowSignUpModal(!showSignUpModal);
+    }
 
     const { clearSignIn } = props;
     useEffect(() => {
@@ -91,9 +96,11 @@ function SignInForm(props) {
                     Sign in
                 </Button>
 
-                <Form.Text className="">
-                    You dont have an account? go to <Link to='/'>sign up</Link>
+                <Form.Text className="text-center">
+                - <Button variant="outline-primary" onClick={toggleShowSignUpModal} size="sm">or sign up now!</Button> -
                 </Form.Text>
+                {/* INVOKE SIGN UP MODAL */}
+                <SignUpModal show={showSignUpModal} handleClose={toggleShowSignUpModal}></SignUpModal>
 
             </Form>
         </Fragment>
