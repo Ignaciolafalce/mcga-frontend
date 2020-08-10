@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { Nav, Navbar } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import './MainNav.css';
-import signInLogo from '../assets/images/signin.png';
+import signInLogo from '../../assets/images/signin.png';
 import { Button } from 'react-bootstrap';
-import SignUpModal from './SignUpModal';
-import { logout } from '../redux/actions/authActions';
+import SignUpModal from '../auth/SignUpModal';
+import { logout } from '../../redux/actions/authActions';
 
 
 const mapStateToProps = (state) => {

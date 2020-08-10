@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import SignInForm from './SignInForm';
+import SignInForm from '../SignInForm';
 
 const mapStateToProps = (state) => {
     return {

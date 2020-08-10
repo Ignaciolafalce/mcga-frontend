@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import DefaultModal from './DefaultModal';
+import DefaultModal from '../shared/DefaultModal';
 import SignUpForm from './SignUpForm';
 import { Link } from 'react-router-dom';
 

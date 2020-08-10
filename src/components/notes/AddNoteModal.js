@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import DefaultModal from './DefaultModal';
+import DefaultModal from './shared/DefaultModal';
 import { addNote, editNote, clearNote} from '../redux/actions/notesActions'
 import { isNullOrEmty } from '../utils/helpers/index';
 import { Form, Button, Alert } from 'react-bootstrap';

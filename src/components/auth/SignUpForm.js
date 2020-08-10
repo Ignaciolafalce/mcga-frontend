@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { signUp, clearSignUp } from '../redux/actions/authActions';
 import { isNullOrEmty, isEmailValid } from '../utils/helpers/index';
-import Loader from './Loader';
+import Loader from './shared/Loader';
 
 const mapStateToProps = (state) => {
     return {
@@ -22,9 +22,10 @@ const mapDispatchToProps = (dispatch) => {
 
 function SignUpForm(props) {
 
+    const { clearSignUp, signUp } = props;
     useEffect(() => {
-        props.clearSignUp();
-    }, []);
+        clearSignUp();
+    }, [clearSignUp]);
 
     const [formUser, setFormUser] = useState({
         username: '',
@@ -61,7 +62,7 @@ function SignUpForm(props) {
 
         setFormUser({ ...formUser, errorMessages: [] });
 
-        props.signUp({ username: formUser.username, email: formUser.email, password: formUser.password, });
+        signUp({ username: formUser.username, email: formUser.email, password: formUser.password, });
     }
 
     return (

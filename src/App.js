@@ -6,10 +6,10 @@ import store from './redux/store';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Layout from './components/shared/Layout';
 import NotFound404 from './components/shared/NotFound404';
-import HomePage from './components/pages/HomePage';
-import SignInPage from './components/pages/SignInPage';
-import BoardsPage from './components/pages/BoardsPage';
-import BoardNotesPage from './components/pages/BoardNotesPage';
+import HomePage from './components/containers/Home';
+import SignInPage from './components/containers/SignIn';
+import BoardsPage from './components/containers/Boards';
+import BoardNotesPage from './components/containers/BoardNotes';
 import AuthWrapper from './components/shared/AuthWrapper';
 
 class App extends React.Component {

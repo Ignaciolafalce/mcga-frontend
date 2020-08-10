@@ -1,13 +1,13 @@
 import React, { useEffect, Fragment, useState } from 'react'
 import { connect } from 'react-redux'
-import PrivateRoute from './PrivateRoute';
-import { formatDateToString } from '../utils/helpers/index';
-import { getBoardById } from '../redux/actions/boardsActions';
-import { getNotesByBoard } from '../redux/actions/notesActions';
-import Loader from './Loader';
+import PrivateRoute from '../shared/PrivateRoute';
+import { formatDateToString } from '../../utils/helpers/index';
+import { getBoardById } from '../../redux/actions/boardsActions';
+import { getNotesByBoard } from '../../redux/actions/notesActions';
+import Loader from '../shared/Loader';
 import { Button } from 'react-bootstrap';
-import AddNoteModal from './AddNoteModal';
-import DeleteNoteModal from './DeleteNoteModal';
+import AddNoteModal from '../AddNoteModal';
+import DeleteNoteModal from '../DeleteNoteModal';
 
 
 const mapStateToProps = (state) => {
@@ -35,14 +35,13 @@ const mapDispatchToProps = (dispatch) => {
 
 function BoardNotesPage(props) {
 
-    const [boardId, setBoardId] = useState(props.match.params.boardId);
+    const [boardId] = useState(props.match.params.boardId);
 
+    const {getBoardById, getNotesByBoard} = props;
     useEffect(() => {
-        if (props.isAuth) {
-            props.getBoardById(boardId);
-            props.getNotesByBoard(boardId);
-        }
-    }, []);
+            getBoardById(boardId);
+            getNotesByBoard(boardId);
+    }, [getBoardById, getNotesByBoard, boardId]);
 
     const [showAddNoteModal, setShowAddNoteModal] = useState(false);
     const toggleAddNoteModal = () => {
@@ -109,7 +108,7 @@ function BoardNotesPage(props) {
                                 <Fragment>
                                     {props.notes.map(note =>
 
-                                        <div className="col-11 col-lg-5 bg-light rounded mr-2 mb-2">
+                                        <div className="col-11 col-lg-5 bg-light rounded mr-2 mb-2" key={note._id}>
                                             <div className="row justify-content-end p-2">
                                                 <Button variant="primary" className="mr-1" onClick={() => {
                                                     setSelectedNote(note);

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import SignUpModal from './SignUpModal';
+import SignUpModal from '../auth/SignUpModal';
 import { Button } from 'react-bootstrap';
 
 const mapStateToProps = (state) => {

@@ -4,7 +4,7 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import { signIn, clearSignIn } from '../redux/actions/authActions';
 import { isNullOrEmty } from '../utils/helpers/index';
 import { Redirect, Link } from 'react-router-dom'
-import Loader from './Loader';
+import Loader from './shared/Loader';
 
 const mapStateToProps = (state) => {
     return {
@@ -24,9 +24,11 @@ const mapDispatchToProps = (dispatch) => {
 
 function SignInForm(props) {
 
+
+    const { clearSignIn } = props;
     useEffect(() => {
-        props.clearSignIn();
-    }, []);
+        clearSignIn();
+    }, [clearSignIn]);
 
     const [formUser, setFormUser] = useState({
         username: '',

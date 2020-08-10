@@ -1,13 +1,13 @@
 import React, { useEffect, Fragment, useState } from 'react'
 import { connect } from 'react-redux'
-import PrivateRoute from './PrivateRoute';
-import { formatDateToString } from '../utils/helpers/index';
-import { getAllBoards, deleteBoard } from '../redux/actions/boardsActions';
-import Loader from './Loader';
+import PrivateRoute from '../shared/PrivateRoute';
+import { formatDateToString } from '../../utils/helpers/index';
+import { getAllBoards } from '../../redux/actions/boardsActions';
+import Loader from '../shared/Loader';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import AddBoardModal from './AddBoardModal';
-import DeleteBoardModal from './DeleteBoardModal';
+import AddBoardModal from '../AddBoardModal';
+import DeleteBoardModal from '../DeleteBoardModal';
 
 
 const mapStateToProps = (state) => {
@@ -28,11 +28,10 @@ const mapDispatchToProps = (dispatch) => {
 
 function BoardsPage(props) {
 
+    const { getAllBoards } = props;
     useEffect(() => {
-        if (props.isAuth) {
-            props.getAllBoards();
-        }
-    }, []);
+        getAllBoards();
+    }, [getAllBoards]);
 
 
     const [showAddBoardModal, setShowAddBoardModal] = useState(false);
